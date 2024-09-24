@@ -1,22 +1,22 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# Base image for Azure Functions .NET 6 runtime
+FROM mcr.microsoft.com/azure-functions/dotnet:4 AS base
+WORKDIR /home/site/wwwroot
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
+# Build image using .NET SDK to build the function app
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["movie_app/movie_app.csproj", "movie_app/"]
-RUN dotnet restore "movie_app/movie_app.csproj"
+
+# Copy the .csproj file and restore dependencies
+COPY ["movie_app.csproj", "./"]
+RUN dotnet restore "./movie_app.csproj"
+
+# Copy the rest of the source code and build the project
 COPY . .
-WORKDIR "/src/movie_app"
-RUN dotnet build "movie_app.csproj" -c Release -o /app/build
+RUN dotnet publish "./movie_app.csproj" -c Release -o /app/publish
 
-FROM build AS publish
-RUN dotnet publish "movie_app.csproj" -c Release -o /app/publish
-
+# Final stage, using the Azure Functions runtime image as base
 FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "movie_app.dll"]
+WORKDIR /home/site/wwwroot
+COPY --from=build /app/publish .
+
+# Azure Functions uses 'func host start' to start the function app, no need for an entrypoint

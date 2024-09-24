@@ -46,3 +46,5 @@ D:\movie_app\movie_app\movie_app\bin\Debug\net6.0\Microsoft.IdentityModel.Protoc
 D:\movie_app\movie_app\movie_app\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\movie_app\movie_app\movie_app\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\movie_app\movie_app\movie_app\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\movie_app\movie_app\movie_app\bin\Debug\net6.0\host.json
+D:\movie_app\movie_app\movie_app\bin\Debug\net6.0\local.settings.json

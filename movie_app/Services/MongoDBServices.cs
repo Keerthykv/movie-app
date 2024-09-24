@@ -4,6 +4,8 @@ using MongoDB.Driver;
 using System.Security.Cryptography;
 using System.Text;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 
 namespace movie_app.Services
 {

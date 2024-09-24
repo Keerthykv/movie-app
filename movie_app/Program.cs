@@ -1,11 +1,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using System;
+using Microsoft.AspNetCore.Builder;
+
 using movie_app.Models;
 using movie_app.Services;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 

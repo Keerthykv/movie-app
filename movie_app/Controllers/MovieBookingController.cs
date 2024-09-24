@@ -4,6 +4,8 @@ using movie_app.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Microsoft.AspNetCore.Cors;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace movie_app.Controllers;
 
